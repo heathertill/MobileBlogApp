@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, ScrollView, Alert } from 'react-native';
-import { NavigationScreenOptions, NavigationScreenProps } from 'react-navigation'
+import { NavigationScreenOptions, NavigationScreenProps, NavigationEvents } from 'react-navigation'
 import { json } from '../utils/api';
 import BlogPreviewCard from '../components/BlogPreviewCard';
 
@@ -27,9 +27,10 @@ export default class AllBlogs extends React.Component<AllBlogsProps, AllBlogsSta
         this.state = {
             blogs: []
         };
+        this._getBlogs();
     }
 
-    async componentDidMount() {
+    async _getBlogs() {
         try {
             let blogs = await json('https://limitless-bastion-43539.herokuapp.com/api/blogs');
             this.setState({ blogs })
@@ -48,6 +49,7 @@ export default class AllBlogs extends React.Component<AllBlogsProps, AllBlogsSta
     render() {
         return (
             <View style={styles.container}>
+                <NavigationEvents onDidFocus={() => this._getBlogs()} />
                 <ScrollView>
                     {this.renderBlogs()}
                 </ScrollView>
@@ -55,9 +57,10 @@ export default class AllBlogs extends React.Component<AllBlogsProps, AllBlogsSta
         );
     }
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#C5C3C6'
+        backgroundColor: '#46494C'
     }
 });

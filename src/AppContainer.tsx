@@ -1,4 +1,4 @@
-// AppContainer.ts not AppContainer.tsx as it doesn't render any kind of tsx to the screen
+// AppContainer.ts not AppContainer.tsx if it doesn't render any kind of tsx to the screen
 // AppContainer.ts is equivalent to App.tsx -- acts as master layout controller for the whole app
 
 import * as React from 'react';
@@ -16,6 +16,7 @@ import SingleBlog from './screens/SingleBlog';
 import Login from './screens/Login';
 import AuthLoading from './screens/AuthLoading';
 import Test from './screens/ScreenTemplate';
+import NewBlog from './screens/NewBlog';
 
 const AuthStack = createStackNavigator(
     {
@@ -24,7 +25,7 @@ const AuthStack = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#4C5C68',
+                backgroundColor: '#46494C',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -49,7 +50,7 @@ const AppStack = createStackNavigator(
         /* The header config from HomeScreen is now here */
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#4C5C68',
+                backgroundColor: '#46494C',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -61,14 +62,14 @@ const AppStack = createStackNavigator(
 const BlogsTab = createBottomTabNavigator(
     {
         Blogs: AppStack,
-        Test: createStackNavigator(
+        Compose: createStackNavigator(
             {
-                Test
+                NewBlog
             },
             {
                 defaultNavigationOptions: {
                     headerStyle: {
-                        backgroundColor: '#4C5C68',
+                        backgroundColor: '#46494C',
                     },
                     headerTintColor: '#fff',
                     headerTitleStyle: {
@@ -86,8 +87,8 @@ const BlogsTab = createBottomTabNavigator(
                 let iconName;
                 if (routeName === 'Blogs') {
                     iconName = 'rss';
-                } else if (routeName === 'Test') {
-                    iconName = 'code';
+                } else if (routeName === 'Compose') {
+                    iconName = 'pencil';
                 }
                 return (
                     <Icon

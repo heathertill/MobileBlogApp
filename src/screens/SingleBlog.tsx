@@ -2,7 +2,7 @@ import * as React from 'react';
 import { json } from '../utils/api';
 import { StyleSheet, ScrollView, View, Alert } from 'react-native';
 import { Text, Badge } from 'react-native-elements';
-import { NavigationScreenOptions, NavigationParams, NavigationScreenProps } from 'react-navigation';
+import { NavigationScreenOptions, NavigationParams } from 'react-navigation';
 import moment from 'moment';
 
 export interface Props extends NavigationParams { }

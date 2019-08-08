@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { json, SetAccessToken, getUser } from '../utils/api';
-import { StyleSheet, ScrollView, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import { NavigationScreenOptions, NavigationScreenProps } from 'react-navigation';
-import { Input, Text, Button } from 'react-native-elements';
+import { Input, Button } from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 
 interface Props extends NavigationScreenProps { }
 interface State { 
@@ -44,7 +45,7 @@ export default class Login extends React.Component<Props, State> {
             if (result) {
                 await SetAccessToken(result.token, { userid: result.userid, role: result.role });
                 let user = await getUser();
-                console.log(user)
+                console.log('user', user)
                 if (user && user.role === 'admin') {
                     this.props.navigation.navigate('AllBlogs')
                 } else {
