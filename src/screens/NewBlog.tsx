@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Alert, Picker, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, Alert, Picker, ScrollView, ImageBackground } from 'react-native';
 import { Button, Icon, Input } from 'react-native-elements';
 import { NavigationScreenOptions, NavigationScreenProps } from 'react-navigation';
 import { json, getUser } from '../utils/api';
@@ -101,51 +101,48 @@ export default class NewBlog extends React.Component<Props, State> {
     render() {
         return (
             <View style={styles.container}>
-                <ScrollView>
-                <Text style={styles.text} >Create New Blog Entry</Text>
-                <Input
-                    label='Title'
-                    containerStyle={styles.input}
-                    inputContainerStyle={{ borderBottomWidth: 0 }}
-                    placeholder='   Title'
-                    value={this.state.title}
-                    leftIcon={{ type: 'font-awesome', name: 'flag', color: '#4C5C68' }}
-                    onChangeText={(text) => this.setState({ title: text })}
-                />
-                <Input
-                    label='Content'
-                    containerStyle={styles.contentInput}
-                    inputContainerStyle={{ borderBottomWidth: 0 }}
-                    placeholder='   Blog Content ...'
-                    multiline
-                    value={this.state.content}
-                    leftIcon={{ type: 'font-awesome', name: 'pencil', color: '#4C5C68' }}
-                    onChangeText={(text) => this.setState({ content: text })}
-                />
-                <View
-                    style={styles.input} >
-                    <Text
-                        onPress={() => this.showTagToggle()}
-                        style={styles.customLabel}>Select Blog Tag</Text>
-                    {this.renderPicker()}
-                    {/* <Picker
-                        style={{ }}
-                        selectedValue={this.state.selectedTag}
-                        onValueChange={(itemValue) => this.setState({selectedTag: itemValue})}
-                    >
-                        {this.state.tags.map(tag => (
-                            <Picker.Item key={tag.id} label={`${tag.name}`} value={tag.id} />
-                        ))}
-                    </Picker> */}
-                </View>
-                <Button
-                    raised
-                    icon={<Icon name='code' color='#ffffff' />}
-                    buttonStyle={{ backgroundColor: '#1985A1', borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                    title='Post New Blog'
-                    onPress={() => this.handleSubmit()}
-                />
-                </ScrollView>
+                <ImageBackground
+                    style={{ flex: 1, flexDirection: 'column', flexGrow: 1 }}
+                    source={{ uri: 'https://limitless-bastion-43539.herokuapp.com/images/greywood.jpg' }}>
+                    <ScrollView>
+                        <View style={{ padding: 15 }} >
+                            <Text style={styles.text} >Create New Blog Entry</Text>
+                            <Input
+                                label='Title'
+                                containerStyle={styles.input}
+                                inputContainerStyle={{ borderBottomWidth: 0 }}
+                                placeholder='   Title'
+                                value={this.state.title}
+                                leftIcon={{ type: 'font-awesome', name: 'flag', color: '#4C5C68' }}
+                                onChangeText={(text) => this.setState({ title: text })}
+                            />
+                            <Input
+                                label='Content'
+                                containerStyle={styles.contentInput}
+                                inputContainerStyle={{ borderBottomWidth: 0 }}
+                                placeholder='   Blog Content ...'
+                                multiline
+                                value={this.state.content}
+                                leftIcon={{ type: 'font-awesome', name: 'pencil', color: '#4C5C68' }}
+                                onChangeText={(text) => this.setState({ content: text })}
+                            />
+                            <View
+                                style={styles.input} >
+                                <Text
+                                    onPress={() => this.showTagToggle()}
+                                    style={styles.customLabel}>Select Blog Tag</Text>
+                                {this.renderPicker()}
+                            </View>
+                            <Button
+                                raised
+                                icon={<Icon name='code' color='#ffffff' />}
+                                buttonStyle={{ backgroundColor: '#1985A1', borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+                                title='Post New Blog'
+                                onPress={() => this.handleSubmit()}
+                            />
+                        </View>
+                    </ScrollView>
+                </ImageBackground>
             </View>
         )
     }
@@ -154,9 +151,7 @@ export default class NewBlog extends React.Component<Props, State> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#DCDCDD',
-        padding: 5,
-        marginVertical: 10
+        backgroundColor: 'white'
     },
     input: {
         marginVertical: 5,

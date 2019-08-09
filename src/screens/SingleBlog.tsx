@@ -58,14 +58,11 @@ export default class SingleBlog extends React.Component<Props, State> {
         }
     }
 
-
-
     render() {
         const { title, content, firstname, _created } = this.state.blog
         const { id, name } = this.state.tag
         return (
             <View style={{ flex: 1 }}>
-                {/* <ScrollView> */}
                 <ImageBackground
                     style={{ flex: 1, flexDirection: 'column', flexGrow: 1 }}
                     imageStyle={{ opacity: 0.6 }}
@@ -85,12 +82,10 @@ export default class SingleBlog extends React.Component<Props, State> {
                     </View>
                     </ScrollView>
                 </ImageBackground>
-                {/* </ScrollView> */}
             </View>
         );
     }
 }
-
 
 const styles = StyleSheet.create({
     titleStyle: {
@@ -143,7 +138,6 @@ const styles = StyleSheet.create({
         color: '#46494C',
         fontSize: 20,
         lineHeight: 25,
-        fontWeight: 'bold',
         padding: 5
     }
 });
