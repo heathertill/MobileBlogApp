@@ -132,12 +132,18 @@ const styles = StyleSheet.create({
     bodyContainer: {
         marginTop: 25,
         marginHorizontal: 15,
-        padding: 5
+        padding: 5,
+        borderWidth: 2,
+        borderColor: '#46494C',
+        borderStyle: 'solid',
+        borderRadius: 10,
+        backgroundColor: 'white'
     },
     bodyTextStyle: {
         color: '#46494C',
         fontSize: 20,
         lineHeight: 25,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        padding: 5
     }
 });

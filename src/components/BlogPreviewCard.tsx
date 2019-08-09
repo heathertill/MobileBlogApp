@@ -23,13 +23,15 @@ class BlogPreviewCard extends React.Component<Props, State> {
             <View style={{ marginBottom: 10 }} >
                 <ImageBackground
                     source={{ uri: 'https://limitless-bastion-43539.herokuapp.com/images/greywood.jpg' }}
-                    style={{ flex: 1, justifyContent: 'center', height: 300 }}>
+                    style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: 300 }}>
                     <View style={{ flex: 1, padding: 25 }} >
-                        <Text style={styles.title} >{title}</Text>
-                        <Text style={ styles.author } >{`Written by ${firstname}`}</Text>
+                        <View style={styles.titleView} >
+                            <Text style={styles.title} >{title}</Text>
+                        </View>
+                        <Text style={styles.author} >{`Written by ${firstname}`}</Text>
                         <Button
                             icon={<Icon name='code' color='#ffffff' />}
-                            buttonStyle={ styles.button }
+                            buttonStyle={{ backgroundColor: '#1985A1' }}
                             title='Read this Blog'
                             onPress={() => this.props.navigation.navigate('SingleBlog', { id })}
                         />
@@ -47,30 +49,28 @@ class BlogPreviewCard extends React.Component<Props, State> {
 const styles = StyleSheet.create({
     title: {
         backgroundColor: 'white',
-        height: 50,
         textAlign: 'center',
-        width: 300, flex: 1,
-        alignSelf: 'center',
-        paddingTop: 75,
         fontSize: 28,
+        fontWeight: 'bold',
+        color: '#46494C'
+    },
+    titleView: {
+        padding: 5,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        width: 300,
+        flex: 1,
         borderColor: '#46494C',
         borderWidth: 2,
         borderRadius: 10,
         borderStyle: 'solid',
     },
-    button: {
-        backgroundColor: '#1985A1',
-        borderRadius: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: 0,
-        alignItems: 'stretch'
-    },
     author: {
         alignSelf: 'center',
         fontSize: 18,
-        padding: 8,
-        fontWeight: 'bold'
+        padding: 10,
+        fontWeight: 'bold',
+        color: '#46494C'
     }
 })
 
