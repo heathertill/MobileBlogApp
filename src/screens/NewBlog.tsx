@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Alert, Picker } from 'react-native';
+import { StyleSheet, View, Text, Alert, Picker, ScrollView } from 'react-native';
 import { Button, Icon, Input } from 'react-native-elements';
 import { NavigationScreenOptions, NavigationScreenProps } from 'react-navigation';
 import { json, getUser } from '../utils/api';
@@ -101,6 +101,7 @@ export default class NewBlog extends React.Component<Props, State> {
     render() {
         return (
             <View style={styles.container}>
+                <ScrollView>
                 <Text style={styles.text} >Create New Blog Entry</Text>
                 <Input
                     label='Title'
@@ -124,10 +125,10 @@ export default class NewBlog extends React.Component<Props, State> {
                 <View
                     style={styles.input} >
                     <Text
-                        // onPress={() => this.showTagToggle()}
+                        onPress={() => this.showTagToggle()}
                         style={styles.customLabel}>Select Blog Tag</Text>
-                    {/* {this.renderPicker()} */}
-                    <Picker
+                    {this.renderPicker()}
+                    {/* <Picker
                         style={{ }}
                         selectedValue={this.state.selectedTag}
                         onValueChange={(itemValue) => this.setState({selectedTag: itemValue})}
@@ -135,7 +136,7 @@ export default class NewBlog extends React.Component<Props, State> {
                         {this.state.tags.map(tag => (
                             <Picker.Item key={tag.id} label={`${tag.name}`} value={tag.id} />
                         ))}
-                    </Picker>
+                    </Picker> */}
                 </View>
                 <Button
                     raised
@@ -144,6 +145,7 @@ export default class NewBlog extends React.Component<Props, State> {
                     title='Post New Blog'
                     onPress={() => this.handleSubmit()}
                 />
+                </ScrollView>
             </View>
         )
     }

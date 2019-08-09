@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Card, Button, Icon } from 'react-native-elements';
+import { Text, Button, Icon } from 'react-native-elements';
 import { StyleSheet, View, ImageBackground } from 'react-native';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 
@@ -20,26 +20,25 @@ class BlogPreviewCard extends React.Component<Props, State> {
     render() {
         const { id, title, firstname } = this.props.blog;
         return (
-            <View style={{ marginBottom:10 }} >
+            <View style={{ marginBottom: 10 }} >
                 <ImageBackground
                     source={{ uri: 'https://limitless-bastion-43539.herokuapp.com/images/greywood.jpg' }}
                     style={{ flex: 1, justifyContent: 'center', height: 300 }}>
-                    <View style={{ flex: 1, padding: 20 }} >
+                    <View style={{ flex: 1, padding: 25 }} >
                         <Text style={styles.title} >{title}</Text>
-                        <Text style={{  alignSelf: 'center', fontSize: 18, padding: 5, fontWeight: 'bold' }} >{`Written by ${firstname}`}</Text>
+                        <Text style={ styles.author } >{`Written by ${firstname}`}</Text>
                         <Button
-                            // style={{ alignSelf: 'flex-end' }}
                             icon={<Icon name='code' color='#ffffff' />}
-                            buttonStyle={{ backgroundColor: '#1985A1', borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0,  alignItems: 'stretch' }}
+                            buttonStyle={ styles.button }
                             title='Read this Blog'
-                            onPress={() => this.props.navigation.navigate('SingleBlog', {id})}
+                            onPress={() => this.props.navigation.navigate('SingleBlog', { id })}
                         />
                     </View>
                 </ImageBackground>
             </View>
 
 
-        
+
 
         );
     }
@@ -58,6 +57,20 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         borderStyle: 'solid',
+    },
+    button: {
+        backgroundColor: '#1985A1',
+        borderRadius: 0,
+        marginLeft: 0,
+        marginRight: 0,
+        marginBottom: 0,
+        alignItems: 'stretch'
+    },
+    author: {
+        alignSelf: 'center',
+        fontSize: 18,
+        padding: 8,
+        fontWeight: 'bold'
     }
 })
 

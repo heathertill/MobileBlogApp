@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { json } from '../utils/api';
-import { StyleSheet, ScrollView, View, Alert } from 'react-native';
+import { StyleSheet, ScrollView, ImageBackground, View, Alert } from 'react-native';
 import { Text, Badge } from 'react-native-elements';
 import { NavigationScreenOptions, NavigationParams } from 'react-navigation';
 import moment from 'moment';
@@ -64,8 +64,13 @@ export default class SingleBlog extends React.Component<Props, State> {
         const { title, content, firstname, _created } = this.state.blog
         const { id, name } = this.state.tag
         return (
-            <View style={styles.container}>
-                <ScrollView>
+            <View style={{ flex: 1 }}>
+                {/* <ScrollView> */}
+                <ImageBackground
+                    style={{ flex: 1, flexDirection: 'column', flexGrow: 1 }}
+                    imageStyle={{ opacity: 0.6 }}
+                    source={{ uri: 'https://limitless-bastion-43539.herokuapp.com/images/greywood.jpg' }}>
+                    <ScrollView>
                     <Text h2 style={styles.titleStyle}>{title}</Text>
                     <Text h4 style={styles.authorStyle}>by {firstname}</Text>
                     <Text style={styles.dateStyle}>on {moment(_created).format('MMM DD, YYYY')}</Text>
@@ -73,13 +78,14 @@ export default class SingleBlog extends React.Component<Props, State> {
                         key={id}
                         value={name}
                         textStyle={styles.textStyle}
-                        containerStyle={styles.badgeContainerStyle}
                         badgeStyle={styles.badgeStyle}
                     />
                     <View style={styles.bodyContainer}>
                         <Text style={styles.bodyTextStyle}>{content}</Text>
                     </View>
-                </ScrollView>
+                    </ScrollView>
+                </ImageBackground>
+                {/* </ScrollView> */}
             </View>
         );
     }
@@ -87,46 +93,37 @@ export default class SingleBlog extends React.Component<Props, State> {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#DCDCDD'
-    },
     titleStyle: {
+        paddingHorizontal: 5,
         textAlign: 'center',
         color: '#46494C',
-        marginTop: 15
+        marginTop: 15,
+        fontWeight: 'bold'
     },
     authorStyle: {
         fontSize: 24,
         color: '#46494C',
         textAlign: 'center',
-        marginTop: 15
+        marginTop: 15,
+        fontWeight: 'bold'
     },
     dateStyle: {
-        fontSize: 16,
+        fontSize: 20,
         textAlign: 'center',
         marginTop: 5,
         marginHorizontal: 20,
         padding: 10,
-        backgroundColor: '#DCDCDD',
-        color: '#46494C'
-    },
-    tagsContainerStyle: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 15
-    },
-    badgeContainerStyle: {
-        // height: 80
+        color: '#46494C',
+        fontWeight: 'bold'
     },
     badgeStyle: {
-        // padding: 2,
-        // backgroundColor: 'green',
+        backgroundColor: '#1985A1',
         borderWidth: 2,
         borderColor: '#46494C',
         borderStyle: 'solid',
         height: 30,
-        width: 120
+        width: 120,
+        marginTop: 5
     },
     textStyle: {
         fontSize: 20,
@@ -140,6 +137,7 @@ const styles = StyleSheet.create({
     bodyTextStyle: {
         color: '#46494C',
         fontSize: 20,
-        lineHeight: 25
+        lineHeight: 25,
+        fontWeight: 'bold'
     }
 });
