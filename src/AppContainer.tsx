@@ -15,7 +15,6 @@ import AllBlogs from './screens/AllBlogs';
 import SingleBlog from './screens/SingleBlog';
 import Login from './screens/Login';
 import AuthLoading from './screens/AuthLoading';
-import Test from './screens/ScreenTemplate';
 import NewBlog from './screens/NewBlog';
 
 const AuthStack = createStackNavigator(

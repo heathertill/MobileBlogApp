@@ -10,7 +10,6 @@ export let getUser = async () => {
     return JSON.parse(user);
 }
 
-
 // cannot use this type of typing in tsx file only ts
 export const json = async <T = any>(uri: string, method: string = 'GET', body?: {}) => {
 

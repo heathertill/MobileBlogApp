@@ -111,19 +111,21 @@ export default class NewBlog extends React.Component<Props, State> {
                                 label='Title'
                                 containerStyle={styles.input}
                                 inputContainerStyle={{ borderBottomWidth: 0 }}
-                                placeholder='   Title'
+                                placeholder='Title'
                                 value={this.state.title}
                                 leftIcon={{ type: 'font-awesome', name: 'flag', color: '#4C5C68' }}
+                                leftIconContainerStyle={{marginRight: 15}}
                                 onChangeText={(text) => this.setState({ title: text })}
                             />
                             <Input
                                 label='Content'
                                 containerStyle={styles.contentInput}
                                 inputContainerStyle={{ borderBottomWidth: 0 }}
-                                placeholder='   Blog Content ...'
+                                placeholder='Blog Content ...'
                                 multiline
                                 value={this.state.content}
                                 leftIcon={{ type: 'font-awesome', name: 'pencil', color: '#4C5C68' }}
+                                leftIconContainerStyle={{marginRight: 15}}
                                 onChangeText={(text) => this.setState({ content: text })}
                             />
                             <View

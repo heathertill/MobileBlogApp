@@ -34,7 +34,6 @@ export default class Login extends React.Component<Props, State> {
             if (result) {
                 await SetAccessToken(result.token, { userid: result.userid, role: result.role });
                 let user = await getUser();
-                console.log('user', user)
                 if (user && user.role === 'admin') {
                     this.props.navigation.navigate('AllBlogs')
                 } else {
@@ -87,9 +86,7 @@ export default class Login extends React.Component<Props, State> {
                             />
                         </View>
                     </View>
-
                 </ImageBackground>
-
             </View>
         );
     }

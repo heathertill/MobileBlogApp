@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Header } from 'react-native-elements';
 
-
-export interface BlogHeaderProps {
-
-}
+export interface BlogHeaderProps { }
 
 const BlogHeader: React.SFC<BlogHeaderProps> = () => {
     return (
@@ -13,7 +9,6 @@ const BlogHeader: React.SFC<BlogHeaderProps> = () => {
             <View style={styles.textView}>
                 <Text style={styles.text}>My Blog</Text>
             </View>
-
         </View>
     );
 }
@@ -25,8 +20,7 @@ const styles = StyleSheet.create({
         margin: 5,
         borderColor: '#C5C3C6',
         borderWidth: 6,
-        borderStyle: 'solid',
-        // borderRadius: 10
+        borderStyle: 'solid'
     },
     text: {
         fontFamily: 'Pacifico',
@@ -40,6 +34,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
-
 
 export default BlogHeader;
